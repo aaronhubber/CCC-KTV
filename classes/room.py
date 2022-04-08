@@ -31,8 +31,8 @@ class Room:
         if len(self.guest_list) >= self.room_capacity:
             return "Not tonight, rooms full"
     
-    def pay_to_sing (self):
-        
+    def recieve_fee (self, room_1):
+        self.till += room_1.fee
     
 
     

@@ -74,6 +74,10 @@ class TestRoom(unittest.TestCase):
         self.room_1.add_guest(self.guest_2)
         self.room_1.add_guest(self.guest_3)
         self.assertEqual("Not tonight, rooms full", self.room_1.capacity_checker())
-
+    
+    def test_room_recieves_fee(self):
+        room_1 = Room("Green Room", 2, 10, 100,)
+        self.room_1.recieve_fee(room_1)
+        self.assertEqual(110, self.room_1.till)
         
     
