@@ -7,7 +7,7 @@ from classes.song import *
 class TestRoom(unittest.TestCase):
 
     def setUp(self):
-        self.room_1 = Room("Green Room", 8, 10, 100,)
+        self.room_1 = Room("Green Room", 2, 10, 100,)
         self.room_2 = Room("Sky Room", 20, 5, 100,)
         self.guest_1 = Guest("Harry Pinkerton", 30)
         self.guest_2 = Guest("Alexa Chan", 30)
@@ -26,7 +26,7 @@ class TestRoom(unittest.TestCase):
         self.assertEqual(100.00, self.room_1.till)
 
     def test_room_has_capacaity(self):
-        self.assertEqual(8, self.room_1.room_capacity)
+        self.assertEqual(2, self.room_1.room_capacity)
     
     def test_amount_charged_for_room(self):
         self.assertEqual(10, self.room_1.fee)
@@ -68,6 +68,12 @@ class TestRoom(unittest.TestCase):
        self.room_1.add_song(self.song_4.song_name)
        self.room_1.remove_song(self.song_2.song_name)
        self.assertEqual("Scar Tissue", self.room_1.show_song_list())
+    
+    def test_is_room_full (self):
+        self.room_1.add_guest(self.guest_1)
+        self.room_1.add_guest(self.guest_2)
+        self.room_1.add_guest(self.guest_3)
+        self.assertEqual("Not tonight, rooms full", self.room_1.capacity_checker())
 
         
     

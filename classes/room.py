@@ -27,5 +27,12 @@ class Room:
     def remove_song (self, song_1):
         self.song_list.remove(song_1)
     
+    def capacity_checker (self):
+        if len(self.guest_list) >= self.room_capacity:
+            return "Not tonight, rooms full"
+    
+    def pay_to_sing (self):
+        
+    
 
     
