@@ -9,9 +9,9 @@ class TestRoom(unittest.TestCase):
     def setUp(self):
         self.room_1 = Room("Green Room", 2, 10, 100,)
         self.room_2 = Room("Sky Room", 20, 5, 100,)
-        self.guest_1 = Guest("Harry Pinkerton", 30)
-        self.guest_2 = Guest("Alexa Chan", 30)
-        self.guest_3 = Guest("Sally Marbels", 150)
+        self.guest_1 = Guest("Harry Pinkerton", 30, "Single Ladies")
+        self.guest_2 = Guest("Alexa Chan", 30, "Californication")
+        self.guest_3 = Guest("Sally Marbels", 150, "Last Resort")
         self.song_1 = Song("Single Ladies", "Beyonce")
         self.song_2 = Song("Last Resort", "Papa Roach")
         self.song_3 = Song("Californication", "Red Hot Chilli Peppers")
@@ -37,7 +37,8 @@ class TestRoom(unittest.TestCase):
 
     def test_show_guest_list(self):
         self.room_1.add_guest(self.guest_1.name)
-        self.assertEqual("Harry Pinkerton", self.room_1.show_guests())
+        self.room_1.add_guest(self.guest_2.name)
+        self.assertEqual(["Harry Pinkerton", "Alexa Chan"], self.room_1.show_guests_name())
     
     def test_remove_guest_from_room(self):
         self.room_1.add_guest(self.guest_1)
@@ -48,7 +49,7 @@ class TestRoom(unittest.TestCase):
         self.room_1.add_guest(self.guest_1.name)
         self.room_1.add_guest(self.guest_2.name)
         self.room_1.remove_guest(self.guest_1.name)
-        self.assertEqual("Alexa Chan", self.room_1.show_guests())
+        self.assertEqual(["Alexa Chan"], self.room_1.show_guests_name())
     
     def test_add_song_to_list(self):
         self.room_1.add_song(self.song_2)
@@ -76,8 +77,9 @@ class TestRoom(unittest.TestCase):
         self.assertEqual("Not tonight, rooms full", self.room_1.capacity_checker())
     
     def test_room_recieves_fee(self):
-        room_1 = Room("Green Room", 2, 10, 100,)
-        self.room_1.recieve_fee(room_1)
+        self.room_1.recieve_fee(self.room_1)
         self.assertEqual(110, self.room_1.till)
+
+    
         
     

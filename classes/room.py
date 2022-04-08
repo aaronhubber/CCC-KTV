@@ -7,9 +7,8 @@ class Room:
         self.guest_list = []
         self.song_list = []
     
-    def show_guests (self):
-        for guest in range(len(self.guest_list)):
-            return self.guest_list[guest]
+    def show_guests_name (self):
+        return self.guest_list
 
     def add_guest (self, guest_1):
         self.guest_list.append(guest_1)
